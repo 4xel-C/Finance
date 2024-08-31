@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Value to quote" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Quote</button>
+    </form>
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Value to quote" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Quote</button>
+    </form>
+    <table>
+        <tr><th>Symbol</th><th>Price</th></tr>
+        {% for symbol in symbols %}
+        <tr><td>{{ symbol["symbol"] }}</td> <td>{{ symbol["price"] }}</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+

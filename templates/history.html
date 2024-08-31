@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transactions history
+{% endblock %}
+
+{% block main %}
+<h1>Your transactions history</h1>
+<h3>Your cash: {{ cash | usd }}</h3>
+    {% if history != [] %}
+    <table>
+        <thead><tr><th>Date</th><th>Type</th><th>Exchanged price</th><th>Shares</th><th>Symbol</th><th>Total</th></tr></thead>
+        <tbody>
+        {% for row in history %}
+        <tr><td>{{ row[1] }}</td> <td>{{ row[3] }}</td> <td>{{ row[4] }}</td> <td>{{ row[5] | usd }}</td> <td>{{ row[6] }}</td> <td>{{ row[7] | usd }}</td> </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    No transactions have been made so far!
+    {% endif %}
+{% endblock %}
+
+

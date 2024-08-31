@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<h1>Your portfolio of stock options</h1>
+    {% if portfolio != [] %}
+    <table>
+        <thead><tr><th>Symbol</th><th>Shares</th><th>Unit price</th><th>Total</th></tr></thead>
+        <tbody>
+        {% for stock in portfolio %}
+        <tr><td>{{ stock["symbol"] }}</td> <td>{{ stock["shares"] }}</td> <td>{{ stock["unit_price"] | usd }}</td> <td>{{ stock["total"] | usd }}</td> </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr><td class="border-0 fw-bold text-end" colspan="3">Cash</td> <td>{{ cash | usd }}</td> </tr>
+            <tr><td class="border-0 fw-bold text-end" colspan="3">TOTAL</td><td>{{ total | usd }}</td></tr>
+        </tfoot>
+    </table>
+    {% else %}
+    No stock owned! Go to "buy" menu to fill your portfolio!
+    {% endif %}
+{% endblock %}
+
+
